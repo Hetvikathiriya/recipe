@@ -60,13 +60,15 @@ section{
 
 .home{
   display: flex;
-  margin-top: 6rem;
+  margin-top: 5rem;
   gap:10rem;
   position: relative;
 }
 
 .home .left h1{
+  
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .home button{
@@ -85,6 +87,7 @@ section{
 
 .home .left h5{
   margin:2rem 0;
+  font-weight: 500;
 }
 
 .bg svg{
