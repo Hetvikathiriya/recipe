@@ -15,10 +15,12 @@ export default function Home() {
           </h5>
           <button>Share your recipe</button>
         </div>
+        {/* food recipe img */}
         <div className="right">
           <img src={foodRecipe} width="720px" height="700px"></img>
         </div>
       </section>
+      {/* add backgroud waves*/}
       <div className="bg">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
