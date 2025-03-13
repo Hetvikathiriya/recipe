@@ -17,6 +17,12 @@ header {
   top:0;
   z-index: 10;
   background-color: #ffffff;
+
+}
+header h2{
+        font-weight: bold;
+        font-size: 4lvb;
+        
 }
 
 header ul{

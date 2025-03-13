@@ -1,9 +1,12 @@
 import React from "react";
 import foodRecipe from "../assets/foodRecipe.png";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
     <>
+      <Navbar />
       <section className="home">
         <div className="left">
           <h1>Food Recipe</h1>
@@ -17,7 +20,7 @@ export default function Home() {
         </div>
         {/* food recipe img */}
         <div className="right">
-          <img src={foodRecipe} width="720px" height="700px"></img>
+          <img src={foodRecipe} width="700px" height="700px"></img>
         </div>
       </section>
       {/* add backgroud waves*/}
@@ -30,6 +33,7 @@ export default function Home() {
           ></path>
         </svg>
       </div>
+      <Footer />
     </>
   );
 }
