@@ -21,8 +21,7 @@ header {
 }
 header h2{
         font-weight: bold;
-        font-size: 4lvb;
-        
+        font-size: 3.8lvb;
 }
 
 header ul{
@@ -94,6 +93,7 @@ section{
 .home .left h5{
   margin:2rem 0;
   font-weight: 500;
+  font-size: medium;
 }
 
 .bg svg{
