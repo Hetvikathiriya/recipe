@@ -65,7 +65,7 @@ section{
 
 .home{
   display: flex;
-  margin-top: 5rem;
+  margin-top: 6rem;
   gap:10rem;
   position: relative;
 }
@@ -91,7 +91,7 @@ section{
 }
 
 .home .left h5{
-  margin:2rem 0;
+  margin:1.5rem 0;
   font-weight: 500;
   font-size: medium;
 }
