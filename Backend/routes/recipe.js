@@ -1,5 +1,5 @@
 const express=require("express")
-const { getRecipes } = require("../controller/recipe")
+const { getRecipes,getRecipe,addRecipe,editRecipe,deleteRecipe } = require("../controller/recipe")
 const router=express.Router()
 
 
