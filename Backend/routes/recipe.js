@@ -1,9 +1,9 @@
 const express=require("express")
+const { getRecipes } = require("../controller/recipe")
 const router=express.Router()
 
-// get all rtecipes
-router.get("/",(req,res)=>{
-    res.json({message:"hello"})
-})
+
+// get all recipes
+router.get("/",getRecipes)
 
 module.exports=router
