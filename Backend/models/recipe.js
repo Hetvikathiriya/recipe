@@ -7,7 +7,7 @@ const recipeSchema=mongoose.Schema({
         type:String,
         required:true
     },
-     ingredients:{
+    ingredients:{
         type:String,
         required:true
     },
@@ -17,11 +17,10 @@ const recipeSchema=mongoose.Schema({
     },
      time:{
         type:String,
-        required:true
+        
     },
      coverImage:{
         type:String,
-        required:true
     },
     
 },{timestamps:true})

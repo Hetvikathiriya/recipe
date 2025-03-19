@@ -5,6 +5,7 @@ const connectDB=require("./config/connectionDB")
 
 const PORT=process.env.PORT || 3000
 connectDB()
+app.use(express.json())
 
 app.use("/recipe",require("./routes/recipe"))
 
