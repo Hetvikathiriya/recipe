@@ -30,7 +30,7 @@ export default function InputForm() {
             required
           ></input>
         </div>
-        <button type="submit">{isSignUp ? "sign Up" : "Login"}</button>
+        <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
         <p onClick={() => setIsSignUp((pre) => !pre)}>
           {isSignUp ? "Already have an account" : "Create new account"}
         </p>
@@ -38,3 +38,4 @@ export default function InputForm() {
     </>
   );
 }
+

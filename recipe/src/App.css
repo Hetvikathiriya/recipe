@@ -178,7 +178,7 @@ section{
 
 .modal{
   position: fixed;
-  top: 34%;
+  top: 30%;
   z-index: 10;
   padding: 2rem;
   border-radius: 6px;
@@ -195,12 +195,14 @@ section{
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 9;
+  
 }
 
 .form{
   width: 71%;
   margin: 0 auto;
   text-align: center;
+  
 }
 
 .form-header{
@@ -237,7 +239,15 @@ section{
   background-color: #d4f6e8;
   font-size: 14px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 7.5rem;
+  display: block
+  
 }
+
+.form button:hover {
+      border: none;
+}
+
 
 .form p{
   cursor: pointer;
@@ -246,6 +256,8 @@ section{
   color:rga(4,136,170);
   font-size: 14px;
   color: #307bbd;
+  text-align: center;
+
 }
 
 .form .error{
