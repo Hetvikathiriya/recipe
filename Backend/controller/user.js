@@ -3,7 +3,7 @@ const User=require("../models/user")
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
 
-// define function
+// user signup
 const userSignUp=async(req,res)=>{
 
         // check user input
@@ -28,14 +28,17 @@ const userSignUp=async(req,res)=>{
         return res.status(200).json({token,newUser})
 }
 
+// user login
 const userLogin=async(req,res)=>{
     const {email,password}=req.body
+     // check required field
     if(!email || !password)
     {
         return res.status(400).json({message:"Email and password is required"})
     }
-    // use is exist already or not
+    // find user by email
     let user=await User.findOne({email})
+    // user is exist already or not
     if(user && await bcrypt.compare(password,user.password)){
         let token=jwt.sign({email,id:user._id},process.env.SECRET_KEY)
         return res.status(200).json({token,user})
@@ -46,6 +49,7 @@ const userLogin=async(req,res)=>{
 
 }
 
+// get user
 const getUser=async(req,res)=>{
     const user=await User.findById(req.params.id)
     res.json({email:user.email})
