@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Modal from "./Modal";
 import InputForm from "./InputForm";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +17,10 @@ export default function Navbar() {
       <header>
         <h2>Food Blog</h2>
         <ul>
-          <li>Home</li>
-          <li>My Recipe</li>
-          <li>Favorites</li>
-          <li onClick={checkLogin}>Login</li>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/myRecipe">My Recipe</NavLink></li>
+          <li><NavLink to="favRecipe">Favorites</NavLink></li>
+          <li onClick={checkLogin}><p className="login">Login</p></li>
         </ul>
       </header>
       {isOpen && (
