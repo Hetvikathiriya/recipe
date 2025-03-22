@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function InputForm(setIsOpen) {
+export default function InputForm({ setIsOpen }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState("");
 
   // handle event
@@ -49,6 +49,7 @@ export default function InputForm(setIsOpen) {
         <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
         {/* error message */}
         {error != "" && <h6 className="error">{error}</h6>}
+        <br></br>
         {/* change link text using ternary operator*/}
         <p onClick={() => setIsSignUp((pre) => !pre)}>
           {isSignUp ? "Already have an account" : "Create new account"}
