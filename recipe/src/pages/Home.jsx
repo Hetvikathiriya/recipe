@@ -3,8 +3,10 @@ import foodRecipe from "../assets/foodRecipe.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Recipeitems from "../components/Recipeitems";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate=useNavigate()
   return (
     <>
       <section className="home">
@@ -16,7 +18,7 @@ export default function Home() {
             humour, or randomised words which don't look even slightly
             believable
           </h5>
-          <button>Share your recipe</button>
+          <button onClick={()=>navigate("/addRecipe")}>Share your recipe</button>
         </div>
         {/* food recipe img */}
         <div className="right">

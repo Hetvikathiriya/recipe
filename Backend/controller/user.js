@@ -25,7 +25,7 @@ const userSignUp=async(req,res)=>{
         }) 
         // create jwt token
         let token=jwt.sign({email,id:newUser._id},process.env.SECRET_KEY)
-        return res.status(200).json({id,token,user:newUser})
+        return res.status(200).json({token,user:newUser})
 }
 
 // user login

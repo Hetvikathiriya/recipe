@@ -270,6 +270,11 @@ section{
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding-top: 50px;
+}
+
+.container button{
+  margin-left: 40%;
 }
 
 .add-recipe{
