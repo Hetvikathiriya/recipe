@@ -28,15 +28,19 @@ export default function Recipeitems() {
                 <div className="icons">
                   <div className="timer">
                     <BsFillStopwatchFill />
-                    30 min
+                    {item.time}
                   </div>
                   {!path ? (
                     <FaHeart />
                   ) : (
                     <div className="action">
-                     <Link to={`editRecipe/${item._id}`}className="='editicon'"><FaEdit /></Link>
-                        
-                      
+                      <Link
+                        to={`/editRecipe/${item._id}`}
+                        className="='editicon'"
+                      >
+                        <FaEdit />
+                      </Link>
+
                       <MdDelete className="deleteIcon" />
                     </div>
                   )}

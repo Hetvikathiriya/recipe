@@ -14,7 +14,7 @@ router.get("/:id",getRecipe)
 router.post("/",upload.single('file'),verifyToken,addRecipe)
 
 // Edit recipe
-router.put("/:id",editRecipe)
+router.put("/:id",upload.single('file'),editRecipe)
 
 // Delete recipe
 router.delete("/:id",deleteRecipe)
