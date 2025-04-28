@@ -1,7 +1,7 @@
 const Recipes=require("../models/recipe")
 const multer  = require('multer')
 
-
+// add multer middleware
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './public/images')
@@ -11,6 +11,8 @@ const storage = multer.diskStorage({
       cb(null, filename)
     }
   })
+  
+
   
   const upload = multer({ storage: storage })
 
@@ -27,21 +29,38 @@ const getRecipe=async(req,res)=>{
 }
 
 // add recipe 
-const addRecipe=async (req,res)=>{
-     const {title, ingredients, instructions, time}=req.body //Extracting Data from Request
+const addRecipe = async (req, res) => {
+  try {
+    console.log("User:", req.user); // अब सही value दिखेगी
 
-    //  check condition of required field
-     if(!title || !ingredients || !instructions)
-     {
-        res.json({message: "Required fields can't be emplty"})
-     }
-    //  store recipe in database
-     const newRecipe=await Recipes.create({
-        title, ingredients, instructions, time
-    })
-    // return response
-    return res.json(newRecipe)
-}
+    const { title, ingredients, instructions, time } = req.body;
+
+    if (!title || !ingredients || !instructions) {
+      return res.status(400).json({ message: "Required fields can't be empty" });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ message: "Cover image is required" });
+    }
+
+    const newRecipe = await Recipes.create({
+      title,
+      ingredients,
+      instructions,
+      time,
+      coverImage: req.file.filename,
+      createdBy:req.user.id
+    });
+
+    return res.status(201).json(newRecipe);
+  } catch (error) {
+    console.error("Error in addRecipe:", error);
+    return res.status(500).json({ message: "Something went wrong", error: error.message });
+  }
+};
+
+
+     
 
 // edit recipe
 const  editRecipe=async(req,res)=>{
@@ -68,4 +87,4 @@ const  deleteRecipe=(req,res)=>{
 }
  
 
-module.exports={getRecipes,getRecipe,addRecipe,editRecipe,deleteRecipe}
+module.exports={getRecipes,getRecipe,addRecipe,editRecipe,deleteRecipe,upload}

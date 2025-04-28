@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import foodRecipe from "../assets/foodRecipe.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Recipeitems from "../components/Recipeitems";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/Modal";
+import InputForm from "../components/InputForm";
 
 export default function Home() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const addRecipe = () => {
+    let token = localStorage.getItem("token");
+    if (token) navigate("/addRecipe");
+    else {
+      setIsOpen(true);
+    }
+  };
   return (
     <>
       <section className="home">
         <div className="left">
+         
           <h1>Food Recipe</h1>
           <h5>
             There are many variations of passages of Lorem Ipsum available, but
@@ -18,7 +29,7 @@ export default function Home() {
             humour, or randomised words which don't look even slightly
             believable
           </h5>
-          <button onClick={()=>navigate("/addRecipe")}>Share your recipe</button>
+          <button onClick={addRecipe}>Share your recipe</button>
         </div>
         {/* food recipe img */}
         <div className="right">
@@ -35,9 +46,13 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-
+      {isOpen && (
+        <Modal onClose={() => setIsOpen(false)}>
+          <InputForm setIsOpen={() => setIsOpen(false)} />
+        </Modal>
+      )}
       <div className="recipe">
-        <Recipeitems/>
+        <Recipeitems />
       </div>
     </>
   );

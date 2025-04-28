@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function AddFoodRecipe() {
+export default function EditRecipe() {
   const [recipeData, setRecipeData] = useState({});
   const navigate = useNavigate();
 
-  // create onHandlechange evenr 
+  // create onHandlechange evenr
   const onHandleChange = (e) => {
     let val =
       e.target.name === "ingredients"
@@ -97,7 +97,7 @@ export default function AddFoodRecipe() {
               onChange={onHandleChange}
             ></input>
           </div>
-          <button type="submit">Add Recipe</button>
+          <button type="submit">Edit Recipe</button>
         </form>
       </div>
     </>
