@@ -6,6 +6,7 @@ import MainNavigation from "./components/MainNavigation";
 import axios from "axios";
 import AddFoodRecipe from "./pages/AddFoodRecipe";
 import EditRecipe from "./pages/EditRecipe";
+import RecipeDetail from "./pages/RecipeDetail";
 
 const getAllRecipes = async () => {
   let allRecipes = [];
@@ -21,9 +22,15 @@ const getMyRecipes = async () => {
   return allRecipes.filter((item) => item.createdBy === user._id);
 };
 
-const getFavRecipes=()=>{
-  return JSON.parse(localStorage.getItem("fav"))
-}
+const getFavRecipes = () => {
+  return JSON.parse(localStorage.getItem("fav"));
+};
+
+// fetch single recipe
+export const getRecipeById = async ({ params }) => {
+  const res = await fetch(`http://localhost:5000/recipe/${params.id}`);
+  return await res.json();
+};
 
 const router = createBrowserRouter([
   {
@@ -32,9 +39,10 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home />, loader: getAllRecipes },
       { path: "/myRecipe", element: <Home />, loader: getMyRecipes },
-      { path: "/favRecipe", element: <Home /> ,loader: getFavRecipes},
+      { path: "/favRecipe", element: <Home />, loader: getFavRecipes },
       { path: "/addRecipe", element: <AddFoodRecipe /> },
       { path: "/editRecipe/:id", element: <EditRecipe /> },
+      { path: "/recipe/:id", element: <RecipeDetail />, loader: getRecipeById },
     ],
   },
 ]);

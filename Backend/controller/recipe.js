@@ -2,17 +2,23 @@ const Recipes=require("../models/recipe")
 const multer  = require('multer')
 
 // add multer middleware
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/images')
-    },
-    filename: function (req, file, cb) {
-      const filename = Date.now() + '-' + file.fieldname
-      cb(null, filename)
-    }
-  })
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, './public/images')
+//     },
+//     filename: function (req, file, cb) {
+//       const filename = Date.now() + '-' + file.originalname
+//       cb(null, filename)
+//     }
+//   })
   
+const storage = multer.diskStorage({
+  destination: "./public/images",      // Save files in the 'uploads' folder
+  filename: (req, file, cb) => {
+      return cb(null, `${Date.now()}${file.originalname}`)
 
+  }
+})
   
   const upload = multer({ storage: storage })
 
