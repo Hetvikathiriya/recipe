@@ -72,7 +72,8 @@ const  editRecipe=async(req,res)=>{
     // handle error
     try{
         if(recipe){
-            await Recipes.findByIdAndUpdate(req.params.id,{...req.body,coverImage:req.file.filename},{new:true})
+            let coverImage=req.file?.filename ? req.file?.filename : recipe.coverImage
+            await Recipes.findByIdAndUpdate(req.params.id,{...req.body,coverImage },{new:true})
             res.json({title,ingredients,instructions,time})
         }
     }
@@ -82,8 +83,13 @@ const  editRecipe=async(req,res)=>{
 }
 
 // delete recipe
-const  deleteRecipe=(req,res)=>{
-    res.json({message:"hello"})
+const  deleteRecipe=async(req,res)=>{
+        try {
+              await Recipes.deleteOne({_id:req.params.id})
+              res.json({status:"OK"})
+        } catch (err) {
+            return res.status(400).json({message:"error"})
+        }
 }
  
 

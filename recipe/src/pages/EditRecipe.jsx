@@ -58,7 +58,7 @@ export default function EditRecipe() {
           authorization: "bearer " + localStorage.getItem("token"),
         },
       });
-      navigate("/");
+      navigate("/myRecipe");
     } catch (err) {
       console.error("Error submitting recipe:", err);
     }
