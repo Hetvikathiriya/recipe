@@ -7,7 +7,6 @@ import axios from "axios";
 import AddFoodRecipe from "./pages/AddFoodRecipe";
 import EditRecipe from "./pages/EditRecipe";
 import RecipeDetail from "./pages/RecipeDetail";
-import Category from "./pages/Category";
 
 const getAllRecipes = async () => {
   let allRecipes = [];

@@ -1,4 +1,4 @@
-const Recipes=require("../models/recipe")
+const Recipes = require("../models/recipe"); // Ensure this is correct and points to your Recipe model
 const multer  = require('multer')
 
 // add multer middleware  
@@ -23,39 +23,34 @@ const getRecipe=async(req,res)=>{
     res.json(recipe)
 }
 
-
 // get recipe by category
-const getRecipesByCategory = async (req, res) => {
-  try {
-    const { category } = req.params;
+// const getRecipesByCategory = async (req, res) => {
+//   try {
+//     const category = req.params.category;
+//     const recipes = await Recipes.find({ category }); // Use Recipes, not Recipe
 
-    // If category is "All", return all recipes
-    if (category === "All") {
-      const allRecipes = await Recipes.find({});
-      return res.json(allRecipes);
-    }
+//     if (!recipes || recipes.length === 0) {
+//       return res.status(404).json({ message: 'No recipes found for this category' });
+//     }
 
-    // Otherwise, filter by category
-    const recipes = await Recipes.find({ category });
+//     return res.json(recipes); // Send the filtered recipes
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: 'Error fetching recipes by category' });
+//   }
+// };
 
-    res.json(recipes);
-  } catch (error) {
-    console.error("Error fetching category recipes:", error);
-    res.status(500).json({
-      message: "Error fetching category recipes",
-      error: error.message,
-    });
-  }
-};
 
 
 // add recipe 
 const addRecipe = async (req, res) => {
   try {
-    console.log("User:", req.user);
-
     const { title, ingredients, instructions, time, category } = req.body;
 
+    console.log("Received category:", category);  // ✅ debug
+    
+    
+    
     if (!title || !ingredients || !instructions || !category) {
       return res.status(400).json({ message: "Required fields can't be empty" });
     }
@@ -69,7 +64,7 @@ const addRecipe = async (req, res) => {
       ingredients,
       instructions,
       time,
-      category,
+      category, // Ensure the category is saved in the recipe
       coverImage: req.file.filename,
       createdBy: req.user.id
     });
@@ -80,6 +75,7 @@ const addRecipe = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong", error: error.message });
   }
 };
+
 
 
 // edit recipe
@@ -120,5 +116,4 @@ module.exports = {
   editRecipe,
   deleteRecipe,
   upload,
-  getRecipesByCategory
 };

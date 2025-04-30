@@ -107,6 +107,48 @@ section{
   position: absolute;
   bottom: 0;
 }
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.category-button {
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.category-buttons-text{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+
+}
+
+.category-button:hover {
+  background-color: #ffe5b4;
+  border-color: #ffa500;
+  color: #000;
+}
+
+.category-button.active {
+  background-color: #ffa500;
+  color: white;
+  border-color: #ffa500;
+}
+
+
 .card img{
   width: 150px;
   height: 150px;
@@ -327,6 +369,7 @@ section{
   margin-top: 10px;
   font-weight: bold;
 }
+
 
 .container{
   display: flex;

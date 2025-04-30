@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 export default function AddFoodRecipe() {
   const [recipeData, setRecipeData] = useState({});
   const navigate = useNavigate();
-  const [category, setCategory] = useState("");
 
   // create onHandlechange evenr
   const onHandleChange = (e) => {
@@ -28,6 +27,7 @@ export default function AddFoodRecipe() {
     formData.append("category", recipeData.category);
     formData.append("instructions", recipeData.instructions);
     formData.append("file", recipeData.file);
+    formData.append("file", recipeData.category);
 
     // Array को handle करने के लिए
     recipeData.ingredients?.forEach((ing, i) => {
@@ -62,21 +62,23 @@ export default function AddFoodRecipe() {
             ></input>
           </div>
 
-          {/* <div className="form-control">
+          <div className="form-control">
             <label>Category</label>
             <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              name="category"
+              value={recipeData.category || ""}
+              onChange={onHandleChange}
             >
+              
               <option value="">Select Category</option>
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
               <option value="Dinner">Dinner</option>
-              <option value="Dessert">Dessert</option>
+              <option value="Salad">Salad</option>
               <option value="Drink">Drink</option>
               <option value="Soup">Soup</option>
             </select>
-          </div> */}
+          </div>
 
           <div className="form-control">
             <label>Time</label>

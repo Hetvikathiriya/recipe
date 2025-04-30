@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import foodRecipe from "../assets/foodRecipe.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,11 +6,29 @@ import Recipeitems from "../components/Recipeitems";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 import InputForm from "../components/InputForm";
-import Category from "./Category";
+import CategoryDisplay from "../components/CategoryDisplay";
+import Category from "../components/Category";
+import axios from "axios";
 
 export default function Home() {
   const navigate = useNavigate();
+  const [recipes, setRecipes] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [category, setCategory] = useState("All"); // or any default category
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/recipe");
+        setRecipes(response.data);
+      } catch (error) {
+        console.error("Failed to fetch recipes", error);
+      }
+    };
+
+    fetchRecipes();
+  }, []);
+
   const addRecipe = () => {
     let token = localStorage.getItem("token");
     if (token) navigate("/addRecipe");
@@ -51,12 +69,13 @@ export default function Home() {
           <InputForm setIsOpen={() => setIsOpen(false)} />
         </Modal>
       )}
-      {/* <div>
-        <Category />
-      </div> */}
-      <div className="recipe">
+
+      <Category category={category} setCategory={setCategory} />
+      <CategoryDisplay category={category} allRecipes={recipes} />
+
+      {/* <div className="recipe">
         <Recipeitems />
-      </div>
+      </div> */}
     </>
   );
 }
