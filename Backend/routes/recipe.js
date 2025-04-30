@@ -1,22 +1,46 @@
-const express=require("express")
-const { getRecipes,getRecipe,addRecipe,editRecipe,deleteRecipe,upload } = require("../controller/recipe")
-const verifyToken = require("../middleware/auth")
-const router=express.Router()
+// const express=require("express")
+// const { getRecipes,getRecipe,addRecipe,editRecipe,deleteRecipe,upload } = require("../controller/recipe")
+// const verifyToken = require("../middleware/auth")
+// const router=express.Router()
 
 
-// get all recipes
-router.get("/",getRecipes)
+// // get all recipes
+// router.get("/",getRecipes)
 
-// Get recipe by id 
-router.get("/:id",getRecipe) 
+// // Get recipe by id 
+// router.get("/:id",getRecipe) 
 
-// add recipe
-router.post("/",upload.single('file'),verifyToken,addRecipe)
+// // add recipe
+// router.post("/",upload.single('file'),verifyToken,addRecipe)
 
-// Edit recipe
-router.put("/:id",upload.single('file'),editRecipe)
+// // Edit recipe
+// router.put("/:id",upload.single('file'),editRecipe)
 
-// Delete recipe
-router.delete("/:id",deleteRecipe)
+// // Delete recipe
+// router.delete("/:id",deleteRecipe)
 
-module.exports=router
+// module.exports=router
+
+const express = require("express");
+const {
+  getRecipes,
+  getRecipe,
+  addRecipe,
+  editRecipe,
+  deleteRecipe,
+  upload,
+  getRecipesByCategory
+} = require("../controller/recipe");
+const verifyToken = require("../middleware/auth");
+
+const router = express.Router();
+
+router.get("/", getRecipes);
+router.get("/:id", getRecipe);
+router.post("/", upload.single("file"), verifyToken, addRecipe);
+router.put("/:id", upload.single("file"), editRecipe);
+router.delete("/:id", deleteRecipe);
+router.get("/category/:category", getRecipesByCategory);
+
+
+module.exports = router;

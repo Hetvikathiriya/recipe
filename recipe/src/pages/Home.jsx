@@ -6,6 +6,7 @@ import Recipeitems from "../components/Recipeitems";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 import InputForm from "../components/InputForm";
+import Category from "./Category";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -21,8 +22,7 @@ export default function Home() {
     <>
       <section className="home">
         <div className="left">
-         
-          <h1>Food Recipe</h1>
+          <h1>Testify</h1>
           <h5>
             There are many variations of passages of Lorem Ipsum available, but
             the majority have suffered alteration in some form, by injected
@@ -51,6 +51,9 @@ export default function Home() {
           <InputForm setIsOpen={() => setIsOpen(false)} />
         </Modal>
       )}
+      {/* <div>
+        <Category />
+      </div> */}
       <div className="recipe">
         <Recipeitems />
       </div>

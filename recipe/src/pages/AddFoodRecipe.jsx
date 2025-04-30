@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 export default function AddFoodRecipe() {
   const [recipeData, setRecipeData] = useState({});
   const navigate = useNavigate();
+  const [category, setCategory] = useState("");
 
-  // create onHandlechange evenr 
+  // create onHandlechange evenr
   const onHandleChange = (e) => {
     let val =
       e.target.name === "ingredients"
@@ -24,6 +25,7 @@ export default function AddFoodRecipe() {
     const formData = new FormData();
     formData.append("title", recipeData.title);
     formData.append("time", recipeData.time);
+    formData.append("category", recipeData.category);
     formData.append("instructions", recipeData.instructions);
     formData.append("file", recipeData.file);
 
@@ -59,6 +61,23 @@ export default function AddFoodRecipe() {
               onChange={onHandleChange}
             ></input>
           </div>
+
+          {/* <div className="form-control">
+            <label>Category</label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="">Select Category</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Drink">Drink</option>
+              <option value="Soup">Soup</option>
+            </select>
+          </div> */}
+
           <div className="form-control">
             <label>Time</label>
             <input

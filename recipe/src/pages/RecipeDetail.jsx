@@ -161,9 +161,7 @@ export default function RecipeDetail() {
 
   return (
     <div className="recipe-detail">
-      <h2 >
-        {recipe.title}
-      </h2>
+      <h2>{recipe.title}</h2>
 
       <img
         src={`http://localhost:5000/images/${recipe.coverImage}`}
@@ -177,7 +175,7 @@ export default function RecipeDetail() {
         }}
       />
 
-      <p >
+      <p>
         <strong style={{ fontSize: "1.3rem" }}>Time:</strong> {recipe.time}
       </p>
 

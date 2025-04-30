@@ -1,22 +1,11 @@
 const Recipes=require("../models/recipe")
 const multer  = require('multer')
 
-// add multer middleware
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, './public/images')
-//     },
-//     filename: function (req, file, cb) {
-//       const filename = Date.now() + '-' + file.originalname
-//       cb(null, filename)
-//     }
-//   })
-  
+// add multer middleware  
 const storage = multer.diskStorage({
   destination: "./public/images",      // Save files in the 'uploads' folder
   filename: (req, file, cb) => {
       return cb(null, `${Date.now()}${file.originalname}`)
-
   }
 })
   
@@ -34,14 +23,40 @@ const getRecipe=async(req,res)=>{
     res.json(recipe)
 }
 
+
+// get recipe by category
+const getRecipesByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    // If category is "All", return all recipes
+    if (category === "All") {
+      const allRecipes = await Recipes.find({});
+      return res.json(allRecipes);
+    }
+
+    // Otherwise, filter by category
+    const recipes = await Recipes.find({ category });
+
+    res.json(recipes);
+  } catch (error) {
+    console.error("Error fetching category recipes:", error);
+    res.status(500).json({
+      message: "Error fetching category recipes",
+      error: error.message,
+    });
+  }
+};
+
+
 // add recipe 
 const addRecipe = async (req, res) => {
   try {
-    console.log("User:", req.user); // अब सही value दिखेगी
+    console.log("User:", req.user);
 
-    const { title, ingredients, instructions, time } = req.body;
+    const { title, ingredients, instructions, time, category } = req.body;
 
-    if (!title || !ingredients || !instructions) {
+    if (!title || !ingredients || !instructions || !category) {
       return res.status(400).json({ message: "Required fields can't be empty" });
     }
 
@@ -54,8 +69,9 @@ const addRecipe = async (req, res) => {
       ingredients,
       instructions,
       time,
+      category,
       coverImage: req.file.filename,
-      createdBy:req.user.id
+      createdBy: req.user.id
     });
 
     return res.status(201).json(newRecipe);
@@ -65,8 +81,6 @@ const addRecipe = async (req, res) => {
   }
 };
 
-
-     
 
 // edit recipe
 const  editRecipe=async(req,res)=>{
@@ -99,4 +113,12 @@ const  deleteRecipe=async(req,res)=>{
 }
  
 
-module.exports={getRecipes,getRecipe,addRecipe,editRecipe,deleteRecipe,upload}
+module.exports = {
+  getRecipes,
+  getRecipe,
+  addRecipe,
+  editRecipe,
+  deleteRecipe,
+  upload,
+  getRecipesByCategory
+};
