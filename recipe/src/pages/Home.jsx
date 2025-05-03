@@ -17,6 +17,7 @@ export default function Home() {
   const [category, setCategory] = useState("All"); // or any default category
 
   useEffect(() => {
+    // get all recipes
     const fetchRecipes = async () => {
       try {
         const response = await axios.get("http://localhost:5000/recipe");
@@ -28,7 +29,8 @@ export default function Home() {
 
     fetchRecipes();
   }, []);
-
+ 
+  // add recipe
   const addRecipe = () => {
     let token = localStorage.getItem("token");
     if (token) navigate("/addRecipe");
@@ -76,6 +78,8 @@ export default function Home() {
       {/* <div className="recipe">
         <Recipeitems />
       </div> */}
+      
     </>
+    
   );
 }

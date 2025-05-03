@@ -13,9 +13,9 @@ export const Category = ({ category, setCategory }) => {
 
   return (
     
-    <div >
+    <div id="explore-menu">
      
-      <div className="category-buttons-text"> Explore Menu</div>
+      <div className="category-buttons-text" > Explore Menu</div>
       <div className="category-buttons" >
       {categories.map((item, index) => (
         <button

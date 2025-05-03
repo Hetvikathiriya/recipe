@@ -1,32 +1,28 @@
+
 import React from "react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
 import MainNavigation from "./components/MainNavigation";
-import axios from "axios";
+import Home from "./pages/Home";
 import AddFoodRecipe from "./pages/AddFoodRecipe";
 import EditRecipe from "./pages/EditRecipe";
 import RecipeDetail from "./pages/RecipeDetail";
+import axios from "axios";
 
+// Loaders
 const getAllRecipes = async () => {
-  let allRecipes = [];
-  await axios.get("http://localhost:5000/recipe").then((res) => {
-    allRecipes = res.data;
-  });
-  return allRecipes;
+  const res = await axios.get("http://localhost:5000/recipe");
+  return res.data;
 };
 
 const getMyRecipes = async () => {
-  let user = JSON.parse(localStorage.getItem("user"));
-  let allRecipes = await getAllRecipes();
-  return allRecipes.filter((item) => item.createdBy === user._id);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const all = await getAllRecipes();
+  return all.filter((item) => item.createdBy === user._id);
 };
 
-const getFavRecipes = () => {
-  return JSON.parse(localStorage.getItem("fav"));
-};
+const getFavRecipes = () => JSON.parse(localStorage.getItem("fav")) || [];
 
-// fetch single recipe
 export const getRecipeById = async ({ params }) => {
   const res = await fetch(`http://localhost:5000/recipe/${params.id}`);
   return await res.json();
@@ -43,15 +39,10 @@ const router = createBrowserRouter([
       { path: "/addRecipe", element: <AddFoodRecipe /> },
       { path: "/editRecipe/:id", element: <EditRecipe /> },
       { path: "/recipe/:id", element: <RecipeDetail />, loader: getRecipeById },
-      // { path: "/category/:name", element: <Category /> }
     ],
   },
 ]);
 
 export default function App() {
-  return (
-    <>
-      <RouterProvider router={router}></RouterProvider>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }

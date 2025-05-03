@@ -7,6 +7,7 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* navbar */
 header {
   width: 100vw;
   display: flex;
@@ -18,12 +19,15 @@ header {
   z-index: 10;
   background-color: #ffffff;
 
+
+/* navbar heading */
 }
 header h2{
         font-weight: bold;
         font-size: 3.8lvb;
 }
 
+/* home img */
 header img{
   margin-left: 10px;
   padding: 0%;
@@ -44,6 +48,7 @@ header ul li{
   cursor: pointer;
 }
 
+/* navbar link */
 li a{
   color: black;
   transition: all 0.3s;
@@ -55,6 +60,7 @@ li a:hover{
   color:black;
 }
 
+/* login button */
 li .login{
   font-size: 16px;
   font-weight: 500;
@@ -64,6 +70,50 @@ header h2{
   margin-left: 1rem;
 }
 
+/* contact button */
+.navbarcontact{
+  color: black;
+  transition: all 0.3s;
+  padding:2px 10px;
+  border-radius: 10px;
+}
+
+.navbarcontact .active{
+  color:black !important;
+  background-color: #d4f6e8;
+}
+
+.active{
+  color:black !important;
+  background-color: #d4f6e8;
+}
+
+/* login form */
+.modal{
+  position: fixed;
+  top: 30%;
+  z-index: 10;
+  padding: 2rem;
+  border-radius: 6px;
+  border:none;
+  left:30%;
+  width: 40%;
+}
+
+/* backdrop */
+.backdrop{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9;
+  
+}
+
+
+/* home page */
 section{
   height: 100vh;
   width: 90%;
@@ -106,8 +156,10 @@ section{
 .bg svg{
   position: absolute;
   bottom: 0;
+
 }
 
+/* catregory buttons */
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -129,10 +181,11 @@ section{
 }
 
 .category-buttons-text{
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
   text-align: center;
-  margin-top: 0;
+  margin-top: auto;
+  margin-bottom: 20px;
 
 }
 
@@ -148,7 +201,7 @@ section{
   border-color: #ffa500;
 }
 
-
+/* recipe card img */
 .card img{
   width: 150px;
   height: 150px;
@@ -166,6 +219,8 @@ section{
   display: grid;
   gap:2.5rem;
   grid-template-columns: repeat(auto-fit,15rem);
+  margin-bottom: 60px;
+  padding: 6px;
 }
 
 .card{
@@ -202,6 +257,7 @@ section{
   font-weight: 500;
 }
 
+/* delete and edit action  */
 .action{
   display: flex;
   font-size: 19px;
@@ -225,37 +281,13 @@ section{
   cursor: pointer;
 }
 
-.modal{
-  position: fixed;
-  top: 30%;
-  z-index: 10;
-  padding: 2rem;
-  border-radius: 6px;
-  border:none;
-  left:30%;
-  width: 40%;
-}
-
-.backdrop{
-  position: fixed;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
-  z-index: 9;
-  
-}
-
+/* add recipe form */
 .form-container{
   width: 71%;
   margin: 0 auto;
   text-align: center;
 }
  
-  
-  
-
 .form h2{
   font-weight: bold;
   font-size: 1.5rem;
@@ -278,9 +310,7 @@ section{
 .form-control select{
   border-radius: 4px ;
   border: 1px solid rgb(156 163 175);
-
 }
-
 
 .form-control .input{
   flex-basis: 70%;
@@ -328,48 +358,18 @@ section{
   color: #307bbd;
 }
 
-
-
 .form .error{
   color:red;
   font-size: 13px;
 }
 
+/* category dropdown */
 .category-section {
-  text-align: center;
-  padding: 20px;
-}
-
-.category-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-}
+  gap: 30px;
+  width: 331px;
 
-.category-item {
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s;
 }
-
-.category-item:hover {
-  transform: scale(1.1);
-}
-
-.category-item img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.category-item p {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
 
 .container{
   display: flex;
@@ -384,15 +384,17 @@ section{
   margin-left: 40%;
 }
 
-.add-recipe{
+
+/* .add-recipe{
   width: 100%;
 }
 
 .recipe{
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-}
+} */
 
+/* footer */
 .footer{
   width:100vw;
   height: 30px;
@@ -406,7 +408,7 @@ section{
   font-size: 14px;
 }
 
-.outer-container{
+/* .outer-container{
   width: 70%;
   margin: 5rem auto;
 }
@@ -427,13 +429,10 @@ section{
   gap: 3rem;
   align-items: justify;
   margin-top: 1rem;
-}
+} */
 
-.active{
-  color:black !important;
-  background-color: #d4f6e8;
-}
 
+/* recipe detail card */
 .recipe-detail {
   max-width: 900px;
   padding: 24px;
@@ -488,5 +487,99 @@ section{
   list-style-type: disc;
 }
 
+/* footer */
+.footer{
+  color: #fff;
+  background-color: #323232;
+  padding: 15px 20px;
+  width: 100%;
+  height: 300px;
+  /* display: block; */
+  position: relative;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 8vw 20px;
+  /* combined padding-top into shorthand */
+  margin-top: 80px;
+}
  
+/* global smooth scrolling (put in index.css or App.css) */
+html {
+  scroll-behavior: smooth;
+}
 
+/* footer content grid */
+.footer-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 80px;
+  margin-top: -40px;
+}
+
+/* logo styling */
+.footer-logo {
+  width: 180px;
+  height: 160px;
+  margin: -60px 0;
+  /* shorthand for top & bottom */
+}
+
+/* left, center, right columns */
+.footer-content-left,
+.footer-content-center,
+.footer-content-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 20px;
+  color: #ddd;
+   
+}
+
+/* list items */
+.footer-content-left li,
+.footer-content-center li,
+.footer-content-right li {
+  /* list-style: none; */
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: left;
+  color: #ddd
+}
+
+.footer-content-center h2{
+        margin-left: 10px;
+}
+.footer-content-left li a,
+.footer-content-center li a,
+.footer-content-right li a{
+
+  color: #ddd;
+}
+
+/* social icons */
+.footer-social-icons {
+  display: flex;
+  gap: 15px;
+  width: 40px;
+  margin-right: 15px;
+}
+
+/* separator line */
+.footer hr {
+  width: 100%;
+  height: 2px;
+  margin: 20px 0;
+  background-color: gray;
+  border: none;
+}
+
+/* copyright */
+.footer p {
+  font-size: 0.9rem;
+  text-align: center;
+}

@@ -65,11 +65,11 @@ export default function AddFoodRecipe() {
           <div className="form-control">
             <label>Category</label>
             <select
+              className="category-section"
               name="category"
               value={recipeData.category || ""}
               onChange={onHandleChange}
             >
-              
               <option value="">Select Category</option>
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
