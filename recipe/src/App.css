@@ -29,23 +29,37 @@ header h2{
 
 /* home img */
 header img{
-  margin-left: 10px;
-  padding: 0%;
-  margin-top: 0;
-  display: flex
+  /* display: block;         Removes inline spacing */
+  width: 150px;
+  height: 70px;
+  margin: 7px 0 0 30px;     /* Top, Right, Bottom, Left */
+  padding: 0;
+  /* object-fit: contain; */
+  align-items: center;
+  
 }
 
 header ul{
-  width: 40%;
+  width: 45%;
   height: 50px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 7px;
+  margin-right: 10px;
+  
 }
 
 header ul li{
   list-style: none;
   cursor: pointer;
+  border-radius: 10px;
+  padding:2px 10px;
+  font-size: large;
+}
+
+header ul li:hover{
+  background-color: #d4f6e8;
 }
 
 /* navbar link */
@@ -53,7 +67,6 @@ li a{
   color: black;
   transition: all 0.3s;
   padding:2px 10px;
-  border-radius: 10px;
 }
 
 li a:hover{
@@ -62,31 +75,35 @@ li a:hover{
 
 /* login button */
 li .login{
-  font-size: 16px;
+  font-size: large;
   font-weight: 500;
+  color: black;
+  padding:2px 10px;
+
 }
 
 header h2{
   margin-left: 1rem;
+  
 }
 
 /* contact button */
 .navbarcontact{
   color: black;
-  transition: all 0.3s;
   padding:2px 10px;
   border-radius: 10px;
+  font-weight: 500;
 }
 
 .navbarcontact .active{
-  color:black !important;
+  /* color:black !important; */
   background-color: #d4f6e8;
 }
 
-.active{
+/* .active{
   color:black !important;
   background-color: #d4f6e8;
-}
+} */
 
 /* login form */
 .modal{
@@ -98,6 +115,7 @@ header h2{
   border:none;
   left:30%;
   width: 40%;
+  
 }
 
 /* backdrop */
@@ -157,6 +175,7 @@ section{
   position: absolute;
   bottom: 0;
 
+
 }
 
 /* catregory buttons */
@@ -168,7 +187,7 @@ section{
   justify-content: center;
 }
 
-.category-button {
+/* .category-button {
   padding: 10px 20px;
   background-color: #f4f4f4;
   border: 2px solid #ddd;
@@ -178,7 +197,7 @@ section{
   font-size: 16px;
   font-weight: 500;
   color: #333;
-}
+} */
 
 .category-buttons-text{
   font-size: 35px;
@@ -189,26 +208,20 @@ section{
 
 }
 
-.category-button:hover {
-  background-color: #ffe5b4;
-  border-color: #ffa500;
-  color: #000;
+.category-buttons :hover{
+      background-color: #d4f6e8;
+      border: #d4f6e8;
 }
 
-.category-button.active {
-  background-color: #ffa500;
-  color: white;
-  border-color: #ffa500;
-}
 
 /* recipe card img */
 .card img{
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   margin: 0 auto;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 .card-container{
@@ -221,20 +234,31 @@ section{
   grid-template-columns: repeat(auto-fit,15rem);
   margin-bottom: 60px;
   padding: 6px;
+  animation: fadeIn 3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* border-radius: 5px; */
 }
 
 .card{
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   
 }
 
+.card img{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 .card-body{
-  background-color: #d4f6e8;
+  background-color: #99d1b9;
   padding: 1rem;
   height: 6rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
 }
+ 
 
 .card-body .title{
   margin-bottom:20px;
@@ -281,13 +305,24 @@ section{
   cursor: pointer;
 }
 
-/* add recipe form */
+.container{
+  margin-top: 50px;
+}
+
+/* login form */
 .form-container{
   width: 71%;
   margin: 0 auto;
   text-align: center;
+  
 }
  
+/* add recipe form */
+.form label{
+
+  font-size: large;
+  font-weight: 500;
+}
 .form h2{
   font-weight: bold;
   font-size: 1.5rem;
@@ -316,7 +351,7 @@ section{
   flex-basis: 70%;
   border:1px solid rgb(156 163 175);
   border-radius: 4px;
-  height: 30px;
+  height: 40px;
   padding: 2px;
 }
 
@@ -367,7 +402,7 @@ section{
 .category-section {
   display: flex;
   gap: 30px;
-  width: 331px;
+  width: 340px;
 
 }
 
@@ -378,6 +413,7 @@ section{
   width: 100vw;
   height: 100vh;
   padding-top: 50px;
+
 }
 
 .container button{
@@ -442,7 +478,7 @@ section{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   line-height: 1.6;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-bottom: 60px;
   margin-left: 200px;
 }
@@ -493,7 +529,7 @@ section{
   background-color: #323232;
   padding: 15px 20px;
   width: 100%;
-  height: 300px;
+  height: 350px;
   /* display: block; */
   position: relative;
   /* display: flex; */
@@ -522,8 +558,9 @@ html {
 /* logo styling */
 .footer-logo {
   width: 180px;
-  height: 160px;
-  margin: -60px 0;
+  height: 80px;
+  margin: -10px 0;
+  /* margin-bottom: auto; */
   /* shorthand for top & bottom */
 }
 
@@ -537,6 +574,7 @@ html {
   text-align: left;
   gap: 20px;
   color: #ddd;
+  margin-bottom: 10px;
    
 }
 
@@ -566,7 +604,9 @@ html {
   display: flex;
   gap: 15px;
   width: 40px;
-  margin-right: 15px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 /* separator line */
@@ -583,3 +623,17 @@ html {
   font-size: 0.9rem;
   text-align: center;
 }
+
+section.Toastify {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  width: 100% !important;
+  z-index: 9999;
+  pointer-events: none;
+}
+

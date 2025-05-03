@@ -1,11 +1,13 @@
- import React, { useEffect, useState } from "react";
-import { Link,  useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsStopwatchFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
-
+// ✅ Toastify imports
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RecipeItems({ recipes }) {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
@@ -18,16 +20,31 @@ export default function RecipeItems({ recipes }) {
     setFilteredRecipes(recipes);
   }, [recipes, isFavRecipe]); // Recalculate on favorite toggle
 
+  // const onDelete = async (id) => {
+  //   await axios.delete(`http://localhost:5000/recipe/${id}`);
+  //   const updated = filteredRecipes.filter((recipe) => recipe._id !== id);
+  //   setFilteredRecipes(updated);
+  //   const updatedFavs = favItems.filter((recipe) => recipe._id !== id);
+  //   localStorage.setItem("fav", JSON.stringify(updatedFavs));
+  // };
+
   // delete functionality
   const onDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/recipe/${id}`);
-    const updated = filteredRecipes.filter((recipe) => recipe._id !== id);
-    setFilteredRecipes(updated);
-    const updatedFavs = favItems.filter((recipe) => recipe._id !== id);
-    localStorage.setItem("fav", JSON.stringify(updatedFavs));
+    try {
+      await axios.delete(`http://localhost:5000/recipe/${id}`);
+      const updated = filteredRecipes.filter((recipe) => recipe._id !== id);
+      setFilteredRecipes(updated);
+
+      const updatedFavs = favItems.filter((recipe) => recipe._id !== id);
+      localStorage.setItem("fav", JSON.stringify(updatedFavs));
+
+      toast.success("Recipe deleted successfully!");
+    } catch (error) {
+      toast.error("Error deleting recipe!");
+    }
   };
 
-  // save recipe functionality4
+  // save recipe functionality
   const favRecipe = (item) => {
     const isFav = favItems.some((recipe) => recipe._id === item._id);
     favItems = isFav

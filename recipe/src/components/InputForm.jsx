@@ -1,7 +1,7 @@
-
-
 import React, { useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function InputForm({ setIsOpen }) {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -28,7 +28,10 @@ export default function InputForm({ setIsOpen }) {
       localStorage.setItem("user", JSON.stringify(res.data.user));
       window.dispatchEvent(new Event("login")); // ✅ Trigger login event
 
-      alert(isSignUp ? "Registered Successfully!" : "Login Successfully!");
+      toast.success(
+        isSignUp ? "Registered Successfully!" : "Login Successfully!"
+      );
+
       setIsOpen(); // Close modal/form
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");

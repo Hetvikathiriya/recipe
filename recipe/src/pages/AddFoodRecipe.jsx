@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddFoodRecipe() {
   const [recipeData, setRecipeData] = useState({});
@@ -10,7 +12,7 @@ export default function AddFoodRecipe() {
   const onHandleChange = (e) => {
     let val =
       e.target.name === "ingredients"
-        ? e.target.value.split(",")
+        ? e.target.value.split(";")
         : e.target.name === "file"
         ? e.target.files[0]
         : e.target.value;
@@ -41,9 +43,17 @@ export default function AddFoodRecipe() {
           authorization: "bearer " + localStorage.getItem("token"),
         },
       });
-      navigate("/");
+
+      toast.success(" Recipe added successfully!");
+
+      // Navigate after a short delay so user can see toast
+      setTimeout(() => navigate("/"), 4000);
     } catch (err) {
       console.error("Error submitting recipe:", err);
+      toast.error("❌ Failed to add recipe. Please try again.", {
+        position: "top-center",
+        autoClose: 3000,
+      });
     }
   };
 
@@ -59,6 +69,7 @@ export default function AddFoodRecipe() {
               className="input"
               name="title"
               onChange={onHandleChange}
+              required
             ></input>
           </div>
 
@@ -69,14 +80,15 @@ export default function AddFoodRecipe() {
               name="category"
               value={recipeData.category || ""}
               onChange={onHandleChange}
+              required
             >
               <option value="">Select Category</option>
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
               <option value="Dinner">Dinner</option>
               <option value="Salad">Salad</option>
-              <option value="Drink">Drink</option>
               <option value="Soup">Soup</option>
+              <option value="Drinks">Drinks</option>
             </select>
           </div>
 
@@ -87,6 +99,7 @@ export default function AddFoodRecipe() {
               className="input"
               name="time"
               onChange={onHandleChange}
+              required
             ></input>
           </div>
           <div className="form-control">
@@ -97,6 +110,7 @@ export default function AddFoodRecipe() {
               name="ingredients"
               rows="3"
               onChange={onHandleChange}
+              required
             ></textarea>
           </div>
           <div className="form-control">
@@ -107,6 +121,7 @@ export default function AddFoodRecipe() {
               name="instructions"
               rows="5"
               onChange={onHandleChange}
+              required
             ></textarea>
           </div>
           <div className="form-control">
@@ -116,6 +131,7 @@ export default function AddFoodRecipe() {
               className="input"
               name="file"
               onChange={onHandleChange}
+              required
             ></input>
           </div>
           <button type="submit">Add Recipe</button>

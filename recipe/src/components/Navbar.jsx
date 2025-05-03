@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import InputForm from "./InputForm";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo2.png"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,8 @@ export default function Navbar() {
   return (
     <>
       <header className="navbar">
-        <h2>Testify</h2>
+        {/* <h2>Testify</h2> */}
+        <img src={logo} alt="logo" />
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/categoryimg/newlogo.png";
+import logo from "../assets/logo2.png";
+import facebook from "../assets/facebook_icon.png";
+import twitter from "../assets/twitter_icon.png";
+import linkedin from "../assets/linkedin_icon.png";
 
 const Footer = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -28,11 +31,17 @@ const Footer = () => {
         <div className="footer-content-left">
           <img className="footer-logo" src={logo} alt="Hunger Hub Logo" />
           <p>
-            Welcome to Hunger Hub – your ultimate recipe companion. Save, share,
+            Welcome to Testify – your ultimate recipe companion. Save, share,
             and discover delicious meals from around the world.
           </p>
+          <div className="footer-social-icons">
+          <img src={facebook} alt="Facebook" />
+          <img src={twitter} alt="Twitter" />
+          <img src={linkedin} alt="LinkedIn" />
         </div>
 
+        </div>
+       
         <div className="footer-content-center">
           <h2>COMPANY</h2>
           <ul>
@@ -58,18 +67,18 @@ const Footer = () => {
             )}
           </ul>
         </div>
-         {/* Right side – contact info */}
+        {/* Right side – contact info */}
         <div className="footer-content-right">
           <h2>GET IN TOUCH</h2>
           <ul>
             <li>+91-243-456-7890‬</li>
-            <li>contact@hungerhub.com</li>
+            <li>contact@testify.com</li>
           </ul>
         </div>
       </div>
       <hr />
       <p className="footer-copyright">
-        Copyright 2025 @ hungerhub.com – All Rights Reserved.
+        Copyright 2025 @ testify.com – All Rights Reserved.
       </p>
     </footer>
   );

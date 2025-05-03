@@ -19,11 +19,11 @@ const recipeSchema=mongoose.Schema({
      time:{
         type:String,   
     },
-    // category: {
-    //     type: String,
-    //     enum: ["Breakfast", "Lunch", "Dinner", "Drinks", "Soup", "Salad"],
-    //     required: true,
-    //   },
+    category: {
+        type: String,
+        enum: ["Breakfast", "Lunch", "Dinner", "Soup", "Salad", "Drinks"],
+        required: true,
+      },
       
     coverImage:{
         type:String,
